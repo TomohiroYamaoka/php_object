@@ -5,7 +5,7 @@ class Bus{
     public function __construct($name){
         $this->name = $name;
         echo "コンストラクタを実行";
-    }
+    
     public function run(){
         echo $this->name.'が走ります'
     }
