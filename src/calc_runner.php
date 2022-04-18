@@ -3,13 +3,11 @@ require_once("SimpleCalc.php");
 
 //クラスからインスタンスを作成
 $calc = new SimpleCalc();
-$calc2 = new SimpleCalc();
 
-//インスタンスのプロパティに代入
-$calc->mypropatiy = 10;
-$calc2->mypropatiy = 20;
+//これでclass内のプロパティにアクセスすることが可能になる。
+$calc->setNumber(10);
 
-echo $calc->number;
-echo $calc2->number;
-
-
+$calc -> add(20);
+$calc -> add(30);
+$calc -> show();
+$calc->getNumber();
