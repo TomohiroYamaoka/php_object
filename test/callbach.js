@@ -79,3 +79,41 @@ func();
 
 //resolveが解決
 //reject()が失敗
+const timerB = (time) =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject();
+    }, time);
+  }).then(
+    function () {
+      console.log("解決");
+    },
+    function () {
+      console.log("拒否");
+    }
+  );
+
+//Promiseには他にも、初期状態の「待機」(pending)と処理が成功して完了した「履行」(fullfilled),処理が失敗した「拒否」(rejected)がある
+//asyncで書くときのtryとcatchの使い方
+(async function () {
+  try {
+    const res1 = await timer(t00, "resolve");
+    console.log(res1);
+
+    const res2 = await timer(600, "reject");
+    console.log(res2);
+
+    const res3 = await timer(700, "resolve");
+    console.log(res3);
+  } catch (e) {
+    console.log(e);
+  }
+  console.log("終了");
+})();
+
+//try→エラーが起きるかもしれない処理
+//catch→エラーを受け取り、処理をする
+//finally→エラーが起きても起きなくても実行
+
+//Promise本体にも静的メソッドが存在する。
+//Promise.all
