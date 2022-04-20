@@ -117,3 +117,10 @@ const timerB = (time) =>
 
 //Promise本体にも静的メソッドが存在する。
 //Promise.all
+
+
+try{
+  //例外の発生する可能性がある処理
+}catch(キャッチ対象の例外クラス名 変数名){
+
+}

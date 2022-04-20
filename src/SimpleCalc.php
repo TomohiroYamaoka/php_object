@@ -19,6 +19,26 @@ class SimpleCalc
     public function show(){
         echo $this->number;
     }
+    //引き算
+    public function subtract($x)
+    {
+        $this -> number + $x;
+    }
+    //かけ算
+    public function multiply($x)
+    {
+        $this -> number = $this ->number * $x;
+    }
+    //割り算
+    public function divide($x)
+    {
+        if($x == 0){
+            $e = new Exception("Divide by zero");
+            throw $e;
+        }
+        $this -> number = $this->number / $x;
+    }
+    //最終的な返り値
     public function getNumber(){
         return $this -> number;
     }
