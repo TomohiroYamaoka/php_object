@@ -1,7 +1,9 @@
 <?php
+require_once("CalcException.php");
+
 class SimpleCalc
 {
-    private $number;
+    protected $number;
 
     //インスタンス作成時に、初期化をする
     //第一引数に初期値を設定する
@@ -33,7 +35,7 @@ class SimpleCalc
     public function divide($x)
     {
         if($x == 0){
-            $e = new Exception("Divide by zero");
+            $e = new CalcException(CalcException::DIVIDE_BY_ZERO);
             throw $e;
         }
         $this -> number = $this->number / $x;
