@@ -39,4 +39,6 @@ select * from courses where title like 'PHP%';
 select * from courses where title like '_____D';
 
 /*並び替え*/
-select * from courses oder by learning_time;
+select * from courses order by learning_time;
+
+/**/
