@@ -152,8 +152,26 @@ FROM goals
 WHERE pairing_id = 103
 
 //問題13(難しい)
+select c.name,COUNT(g.goal_time)
+FROM goals g
+LEFT JOIN parings p ON p.id = g.pairing_id
+LEFT JOIN countries c ON c.id =  p.pairing_id
+WHERE p.id = 39 OR p.id =103
+ORDER BY c.name
+
+
 //問題14(難しい)
+select par.kickoff,par.my_countries_id,par.enemy_country_id,p.ranking AS my_ranking, p.ranking AS enemy_ranking,COUNT(g.id) AS my_goals
+FROM parings par
+LEFT JOIN countries c1 ON c1.id = p1.my_countries_id
+LEFT JOIN countries c2 ON c2.id = p1.enemy_country_id
+LEFT JOIN goals g ON c.id =  p.pairing_id
+WHERE p.id = 39 OR p.id =103
+ORDER BY p.kickoff,c.ranking
+
 //問題15(難しい)
+https://tech.pjin.jp/blog/2016/07/21/sql%e7%b7%b4%e7%bf%92%e5%95%8f%e9%a1%8c-%e5%95%8f15/
+
 //問題16（難しい）
 //問題17(難しい)
 
@@ -191,4 +209,52 @@ LIMIT 5
 SELECT name, height, weight
 FROM players
 ORDER BY height DESC
-LIMIT 5, 15
+LIMIT 5, 
+***********************************
+//58
+SELECT p.name,p.uniform_num
+FROM players p
+JOIN countries c ON c.country_id = p.country_id
+
+
+//59
+SELECT c.name,p.name,g.goal_time
+FROM goal_time g
+JOIN players p ON p.id = g.player_id
+JOIN countries c ON c.id = p.counttry_id = c.id
+
+//60
+SELECT g.goal_time,p.uniform_num,p.position,p.name
+FROM goal_time g
+LEFT JOIN players p ON g.player_id = p.id
+
+//61
+SELECT g.goal_time, p.uniform_num, p.position, p.name
+FROM players p 
+RIGHT JOIN goals g ON g.player_id = p.id
+
+//62(わからない)
+
+//63
+飛ばす
+
+
+//64
+
+//67(再度)
+SELECT p.position,MAX(p.height) AS 最大身長,(SELECT c.name FROM countries c where c.id = p.id)
+FROM players p
+ORDER BY p.position
+
+
+//68
+SELECT uniform_num,position,name,height 
+FROM players
+WHERE (SELECT AVG(height) FROM players) > height
+
+
+//69
+SELECT group_name,MAX(ranking),MIN(ranking)
+FROM countries
+GROUP BY group_name
+HAVING MAX(ranking) - MIN(ranking) => 50
