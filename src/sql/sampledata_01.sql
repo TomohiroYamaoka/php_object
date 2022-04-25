@@ -233,13 +233,22 @@ SELECT g.goal_time, p.uniform_num, p.position, p.name
 FROM players p 
 RIGHT JOIN goals g ON g.player_id = p.id
 
-//62(わからない)
+//62
+SELECT c.name,g.goal_time,p.position,p.name
+FROM goals g
+LEFT JOIN players p ON g.player_id=p.id
+LEFT JOIN countries c ON p.country_id = c.id
 
 //63
 飛ばす
 
 
 //64
+SELECT g.id,g.goal_time,(SELECT p.name FROM players p where p.id=g.player_id) AS player_name
+FROM goals g
+WHERE g.player_id IN NOT NULL
+
+//65
 
 //67(再度)
 SELECT p.position,MAX(p.height) AS 最大身長,(SELECT c.name FROM countries c where c.id = p.id)
