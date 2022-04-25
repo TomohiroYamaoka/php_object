@@ -141,7 +141,54 @@ FROM goals g
 WHERE g.player_id IS NULL;
 
 //問題11
-SELECT c.group_name
-FROM countries c
+SELECT c.group_name,count(g.id)
+FROM goals g
 WHERE g.player_id IS NULL;
 
+
+/問題12
+SELECT goal_time
+FROM goals 
+WHERE pairing_id = 103
+
+//問題13(難しい)
+//問題14(難しい)
+//問題15(難しい)
+//問題16（難しい）
+//問題17(難しい)
+
+//問題18
+SELECT p.kickoff, ADDTIME(p.kickoff '-12:00:00') AS kickoff_jp
+FROM parings p
+WHERE p.id = 1 and p.id = 4
+
+//問題19
+SELECT TIMESTAMPDIFF(YEAR,birth,'2014-06-13') AS age,COUNT(id) AS player_count
+FROM players 
+ORDER BY age
+
+//問題20
+SELECT TRUNCATE(TIMESTAMPDIFF(YEAR, birth, '2014-06-13'), -1) AS age, COUNT(id) AS player_count
+FROM players 
+GROUP BY age
+
+//問題21
+SELECT FLOOR(TIMESTAMPDIFF(YEAR, birth, '2014-06-13') / 5) * 5   AS age, COUNT(id) AS player_count
+FROM players 
+GROUP BY age
+
+//問題22
+とばす。
+
+
+//問題23
+SELECT name,height,weight
+FROM players
+ORDER BY height DESC 
+LIMIT 5
+
+//問題24
+SELECT name, height, weight
+FROM players
+ORDER BY height DESC
+LIMIT 5, 15
